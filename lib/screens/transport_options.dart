@@ -81,6 +81,7 @@ class _TransportOptionsState extends State<TransportOptions> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
+                    padding: EdgeInsets.all(0),
                     onPressed: () {
                       index = (index - 1) % transports.length;
                       setState(() {});
@@ -92,6 +93,7 @@ class _TransportOptionsState extends State<TransportOptions> {
                     ),
                   ),
                   IconButton(
+                    padding: EdgeInsets.all(0),
                     onPressed: () {
                       index = (index + 1) % transports.length;
                       setState(() {});
