@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, sized_box_for_whitespace
 
 import 'package:carbon_counter/constants/constants.dart';
 import 'package:flutter/material.dart';
@@ -77,6 +77,7 @@ class _TransportOptionsState extends State<TransportOptions> {
             ),
             Container(
               height: 250,
+              width: double.infinity,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

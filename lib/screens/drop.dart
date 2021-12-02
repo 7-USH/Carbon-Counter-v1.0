@@ -2,6 +2,7 @@
 
 import 'package:awesome_dropdown/awesome_dropdown.dart';
 import 'package:carbon_counter/constants/constants.dart';
+import 'package:carbon_counter/models/button.dart';
 import 'package:carbon_counter/screens/transport_options.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -87,7 +88,11 @@ class _DropDownWithPanDownAndDrawerState
                   CustomTextField(
                     hint: "Enter Distance",
                     suffix: "Km",
-                  )
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  CustomButton()
                 ],
               ),
             ),
@@ -164,8 +169,11 @@ class CustomTextField extends StatelessWidget {
               ),
             ),
             onChanged: (value) {
+
+
               print(value);
               // take
+              
             },
           ),
         ));
