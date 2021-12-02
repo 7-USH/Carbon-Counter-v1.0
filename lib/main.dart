@@ -4,8 +4,6 @@ import 'package:carbon_counter/constants/constants.dart';
 import 'package:carbon_counter/screens/base_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'screens/demo_screen.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -18,10 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: themeData,
-      initialRoute: DemoScreen.id,
+      initialRoute: BaseScreen.id,
       routes: {
         BaseScreen.id: (context) => BaseScreen(),
-        DemoScreen.id: (context) => DemoScreen(),
       },
     );
   }

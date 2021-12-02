@@ -21,17 +21,10 @@ class _DemoScreenState extends State<DemoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: DropdownButton<String>(
-            onChanged: (String? newValue) {
-              setState(() {
-                dropDownValue = newValue!;
-              });
-            },
-            items: items.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(value: value, child: Text(value));
-            }).toList()),
-      ),
+      body: DropdownButton<String>(
+          items: items.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(value: value, child: Text(value));
+      }).toList()),
     );
   }
 }

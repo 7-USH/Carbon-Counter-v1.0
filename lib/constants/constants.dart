@@ -11,7 +11,7 @@ final ThemeData themeData = ThemeData(
   textTheme: TextTheme(
   headline1:GoogleFonts.lobsterTwo(
     color:darkShrinePink,
-    fontSize:40,
+    fontSize:50,
     fontWeight: FontWeight.w300
   ),
   bodyText1: GoogleFonts.lato(
