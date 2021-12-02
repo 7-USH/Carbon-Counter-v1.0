@@ -17,11 +17,12 @@ class BaseScreen extends StatelessWidget {
     });
 
     return Scaffold(
-        body: Center(
-      child: Text(
-        "Carbon Counter",
-        style: Theme.of(context).textTheme.headline1,
+      body: Center(
+        child: Text(
+          "Carbon Counter",
+          style: Theme.of(context).textTheme.headline1,
+        ),
       ),
-    ));
+    );
   }
 }

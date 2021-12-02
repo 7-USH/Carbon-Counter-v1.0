@@ -1,11 +1,22 @@
 // ignore_for_file: non_constant_identifier_names, avoid_types_as_parameter_names
 
 import 'package:carbon_counter/constants/constants.dart';
+import 'package:carbon_counter/screens/calculate2.dart';
+import 'package:carbon_counter/screens/drop.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomButton extends StatefulWidget {
-  const CustomButton({Key? key}) : super(key: key);
+  final double milage;
+  final double distance;
+  final String fuelType;
+
+  const CustomButton(
+      {Key? key,
+      required this.milage,
+      required this.distance,
+      required this.fuelType})
+      : super(key: key);
 
   @override
   _CustomButtonState createState() => _CustomButtonState();
@@ -18,10 +29,16 @@ class _CustomButtonState extends State<CustomButton> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-       
-        //TODO: Firestore....
-
-
+        Navigator.push<void>(
+          context,
+          MaterialPageRoute<void>(
+            builder: (BuildContext context) => Calculate2(
+              distance: distance,
+              fuel: fuelType,
+              milage: milage,
+            ),
+          ),
+        );
       },
       onTapDown: (TapDownDetails) {
         onPressed = !onPressed;
@@ -29,9 +46,7 @@ class _CustomButtonState extends State<CustomButton> {
       },
       onTapUp: (TapUpDetails) {
         onPressed = false;
-        setState(() {
-          
-        });
+        setState(() {});
       },
       child: Container(
         height: 50,
@@ -52,10 +67,11 @@ class _CustomButtonState extends State<CustomButton> {
                   blurRadius: 20),
             ]),
         child: Center(
-            child: Text(
-          "Calculate",
-          style: GoogleFonts.lato(color: darkShrinePink, fontSize: 20),
-        )),
+          child: Text(
+            "Calculate",
+            style: GoogleFonts.lato(color: darkShrinePink, fontSize: 20),
+          ),
+        ),
       ),
     );
   }
