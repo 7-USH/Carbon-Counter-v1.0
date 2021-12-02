@@ -114,7 +114,7 @@ class _TransportOptionsState extends State<TransportOptions> {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             transports[index]["text"].toString(),
-            style: TextStyle(fontSize: 35),
+            style: Theme.of(context).textTheme.headline2,
           ),
         )
       ],

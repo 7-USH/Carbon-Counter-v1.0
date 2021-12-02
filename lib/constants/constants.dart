@@ -17,6 +17,15 @@ final ThemeData themeData = ThemeData(
   bodyText1: GoogleFonts.lato(
     color: darkShrinePink,
     fontSize: 20,
-  )
+  ),
+  headline2: GoogleFonts.ptSerif(
+    color: darkShrinePink,
+    fontSize: 40,
+  ),
+  bodyText2: GoogleFonts.ptSerif(
+        color: Colors.red,
+        fontSize: 40,
+      ),
+   
 )
 );
