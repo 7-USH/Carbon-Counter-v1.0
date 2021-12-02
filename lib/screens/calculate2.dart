@@ -42,14 +42,56 @@ class _Calculate2State extends State<Calculate2> {
 
     return Scaffold(
       body: Center(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("Carbon Emmision: "),
-              Center(
-                  child: Text(calculate(distance, milage, getGHG()).toString()))
-            ],
+        child: Padding(
+          padding:
+              const EdgeInsets.only(top: 100, bottom: 100, left: 30, right: 30),
+          child: Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(25),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black.withOpacity(0.19),
+                    offset: const Offset(0.5, 4),
+                    spreadRadius: 1,
+                    blurRadius: 8),
+                BoxShadow(
+                    color: Colors.white.withOpacity(0.4),
+                    offset: const Offset(-3, -4),
+                    spreadRadius: -2,
+                    blurRadius: 20),
+              ],
+            ),
+            child: Column(
+              children: [
+                const SizedBox(height: 100,),
+                Text(
+                  "Your Carbon Emission as of Today is",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline2,
+                ),
+                const SizedBox(height:50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      calculate(distance, milage, getGHG()).toStringAsFixed(
+                        calculate(distance, milage, getGHG()).truncateToDouble() ==
+                                calculate(distance, milage, getGHG())
+                            ? 0
+                            : 2),
+                      style: Theme.of(context).textTheme.bodyText2 ,
+                    ),
+                    const Text("  CO₂eKg",style: TextStyle(
+                      fontSize: 30
+                    ),)
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
