@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:ffi';
+
+import 'package:carbon_counter/screens/transport_options.dart';
 import 'package:flutter/material.dart';
 
 class DemoScreen extends StatelessWidget {
@@ -9,6 +12,15 @@ class DemoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            SizedBox(height: MediaQuery.of(context).size.height / 15),
+            TransportOptions(),
+          ],
+        ),
+      ),
     );
   }
 }
