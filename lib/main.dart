@@ -2,6 +2,8 @@
 
 import 'package:carbon_counter/constants/constants.dart';
 import 'package:carbon_counter/screens/base_screen.dart';
+import 'package:carbon_counter/screens/demo_screen.dart';
+import 'package:carbon_counter/screens/drop.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,9 +18,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: themeData,
-      initialRoute: BaseScreen.id,
+      initialRoute:DropDownWithPanDownAndDrawer.id,
       routes: {
-        BaseScreen.id : (context) => BaseScreen(),
+        BaseScreen.id : (context) => BaseScreen(duration: 5,nextPage: DropDownWithPanDownAndDrawer(),),
+        DemoScreen.id : (context) => DemoScreen(),
+        DropDownWithPanDownAndDrawer.id : (context) =>DropDownWithPanDownAndDrawer(),
       },
     );
   }
