@@ -2,6 +2,7 @@
 
 import 'package:awesome_dropdown/awesome_dropdown.dart';
 import 'package:carbon_counter/constants/constants.dart';
+import 'package:carbon_counter/screens/transport_options.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -44,47 +45,51 @@ class _DropDownWithPanDownAndDrawerState
           child: Container(
             width: MediaQuery.of(context).size.width,
             margin: const EdgeInsets.only(top: 15, left: 16, right: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AwesomeDropDown(
-                  numOfListItemToShow: 6,
-                  dropDownBGColor: Colors.white,
-                  isPanDown: _isPanDown,
-                  dropDownList: _list,
-                  isBackPressedOrTouchedOutSide: _isBackPressedOrTouchedOutSide,
-                  selectedItem: _selectedItem,
-                  selectedItemTextStyle:
-                      GoogleFonts.lato(color: darkShrinePink, fontSize: 20),
-                  dropDownListTextStyle:
-                      GoogleFonts.lato(color: darkShrinePink, fontSize: 20),
-                  onDropDownItemClick: (selectedItem) {
-                    _selectedItem = selectedItem;
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TransportOptions(),
+                  AwesomeDropDown(
+                    numOfListItemToShow: 6,
+                    dropDownBGColor: Colors.white,
+                    isPanDown: _isPanDown,
+                    dropDownList: _list,
+                    isBackPressedOrTouchedOutSide:
+                        _isBackPressedOrTouchedOutSide,
+                    selectedItem: _selectedItem,
+                    selectedItemTextStyle:
+                        GoogleFonts.lato(color: darkShrinePink, fontSize: 20),
+                    dropDownListTextStyle:
+                        GoogleFonts.lato(color: darkShrinePink, fontSize: 20),
+                    onDropDownItemClick: (selectedItem) {
+                      _selectedItem = selectedItem;
 
-                    //  read selected Item
-                  },
-                  dropStateChanged: (isOpened) {
-                    _isDropDownOpened = isOpened;
-                    if (!isOpened) {
-                      _isBackPressedOrTouchedOutSide = false;
-                    }
-                  },
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                CustomTextField(
-                  hint: "Enter Mileage",
-                  suffix: "Km/L",
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                CustomTextField(
-                  hint: "Enter Distance",
-                  suffix: "Km",
-                )
-              ],
+                      //  read selected Item
+                    },
+                    dropStateChanged: (isOpened) {
+                      _isDropDownOpened = isOpened;
+                      if (!isOpened) {
+                        _isBackPressedOrTouchedOutSide = false;
+                      }
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CustomTextField(
+                    hint: "Enter Mileage",
+                    suffix: "Km/L",
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CustomTextField(
+                    hint: "Enter Distance",
+                    suffix: "Km",
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -117,7 +122,8 @@ class _DropDownWithPanDownAndDrawerState
 class CustomTextField extends StatelessWidget {
   String hint;
   String suffix;
-  CustomTextField({Key? key,this.suffix ="" ,required this.hint}) : super(key: key);
+  CustomTextField({Key? key, this.suffix = "", required this.hint})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -158,8 +164,6 @@ class CustomTextField extends StatelessWidget {
               ),
             ),
             onChanged: (value) {
-
-              
               print(value);
               // take
             },
