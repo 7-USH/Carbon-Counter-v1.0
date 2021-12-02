@@ -191,7 +191,6 @@ class CustomTextField extends StatelessWidget {
 
             Provider.of<Data>(context, listen: false).getDistance(distance);
             Provider.of<Data>(context, listen: false).getMileage(milage);
-            Provider.of<Data>(context, listen: false).show();
             // take
           },
         ),

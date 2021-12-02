@@ -37,8 +37,6 @@ class _Calculate2State extends State<Calculate2> {
         ghg2 = value.data()!['GHG'];
         setState(() {});
       });
-      print("BC");
-      print(ghg2);
       return ghg2;
     }
 
@@ -60,8 +58,6 @@ class _Calculate2State extends State<Calculate2> {
 
   double calculate(double distance, double mileage, double g) {
     double ghg = (distance / mileage) * g;
-    print(g);
-    print(ghg);
     return ghg;
   }
 }
