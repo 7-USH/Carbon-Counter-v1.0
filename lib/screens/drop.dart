@@ -54,6 +54,7 @@ class _DropDownWithPanDownAndDrawerState
                   AwesomeDropDown(
                     numOfListItemToShow: 6,
                     dropDownBGColor: Colors.white,
+                    dropDownOverlayBGColor: primaryShrinePink,
                     isPanDown: _isPanDown,
                     dropDownList: _list,
                     isBackPressedOrTouchedOutSide:
@@ -92,7 +93,13 @@ class _DropDownWithPanDownAndDrawerState
                   SizedBox(
                     height: 40,
                   ),
-                  CustomButton()
+                  CustomButton(onSubmit: (){
+
+                    
+                    // 
+
+
+                  },)
                 ],
               ),
             ),

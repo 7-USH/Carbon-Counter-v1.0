@@ -1,11 +1,12 @@
-// ignore_for_file: non_constant_identifier_names, avoid_types_as_parameter_names
+// ignore_for_file: non_constant_identifier_names, avoid_types_as_parameter_names, must_be_immutable
 
 import 'package:carbon_counter/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomButton extends StatefulWidget {
-  const CustomButton({Key? key}) : super(key: key);
+  CustomButton({Key? key, required this.onSubmit}) : super(key: key);
+  Function onSubmit;
 
   @override
   _CustomButtonState createState() => _CustomButtonState();
@@ -18,10 +19,8 @@ class _CustomButtonState extends State<CustomButton> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-       
+        widget.onSubmit();
         //TODO: Firestore....
-
-
       },
       onTapDown: (TapDownDetails) {
         onPressed = !onPressed;
@@ -29,9 +28,7 @@ class _CustomButtonState extends State<CustomButton> {
       },
       onTapUp: (TapUpDetails) {
         onPressed = false;
-        setState(() {
-          
-        });
+        setState(() {});
       },
       child: Container(
         height: 50,
