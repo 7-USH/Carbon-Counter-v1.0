@@ -3,11 +3,18 @@
 import 'package:awesome_dropdown/awesome_dropdown.dart';
 import 'package:carbon_counter/constants/constants.dart';
 import 'package:carbon_counter/models/button.dart';
+import 'package:carbon_counter/models/data.dart';
 import 'package:carbon_counter/screens/transport_options.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+double milage = 0;
+double distance = 0;
+String fuelType = "";
 
 class DropDownWithPanDownAndDrawer extends StatefulWidget {
+  TextEditingController milage = TextEditingController();
   static String id = "Drop";
   @override
   _DropDownWithPanDownAndDrawerState createState() =>
@@ -54,7 +61,6 @@ class _DropDownWithPanDownAndDrawerState
                   AwesomeDropDown(
                     numOfListItemToShow: 6,
                     dropDownBGColor: Colors.white,
-                    dropDownOverlayBGColor: primaryShrinePink,
                     isPanDown: _isPanDown,
                     dropDownList: _list,
                     isBackPressedOrTouchedOutSide:
@@ -66,7 +72,8 @@ class _DropDownWithPanDownAndDrawerState
                         GoogleFonts.lato(color: darkShrinePink, fontSize: 20),
                     onDropDownItemClick: (selectedItem) {
                       _selectedItem = selectedItem;
-
+                      fuelType = _selectedItem;
+                      Provider.of<Data>(context,listen: false).getFuel(fuelType);
                       //  read selected Item
                     },
                     dropStateChanged: (isOpened) {
@@ -82,6 +89,7 @@ class _DropDownWithPanDownAndDrawerState
                   CustomTextField(
                     hint: "Enter Mileage",
                     suffix: "Km/L",
+                    index: 0,
                   ),
                   SizedBox(
                     height: 20,
@@ -89,17 +97,16 @@ class _DropDownWithPanDownAndDrawerState
                   CustomTextField(
                     hint: "Enter Distance",
                     suffix: "Km",
+                    index: 1,
                   ),
                   SizedBox(
                     height: 40,
                   ),
-                  CustomButton(onSubmit: (){
-
-                    
-                    // 
-
-
-                  },)
+                  CustomButton(
+                    fuelType: fuelType,
+                    milage: milage,
+                    distance: distance,
+                  )
                 ],
               ),
             ),
@@ -134,55 +141,61 @@ class _DropDownWithPanDownAndDrawerState
 class CustomTextField extends StatelessWidget {
   String hint;
   String suffix;
-  CustomTextField({Key? key, this.suffix = "", required this.hint})
+  int index;
+  CustomTextField(
+      {Key? key, this.suffix = "", required this.hint, required this.index})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 50,
-        width: MediaQuery.of(context).size.width - 55,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(23),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black.withOpacity(0.19),
-                  offset: const Offset(0.5, 4),
-                  spreadRadius: 1,
-                  blurRadius: 8),
-              BoxShadow(
-                  color: Colors.white.withOpacity(0.4),
-                  offset: const Offset(-3, -4),
-                  spreadRadius: -2,
-                  blurRadius: 20),
-            ]),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-          child: TextField(
-            keyboardType: TextInputType.number,
-            cursorColor: darkShrinePink,
-            decoration: InputDecoration(
-              suffixText: suffix,
-              suffixStyle:
-                  GoogleFonts.lato(color: darkShrinePink, fontSize: 17),
-              hintStyle: GoogleFonts.lato(color: darkShrinePink, fontSize: 20),
-              hintText: hint,
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent),
-              ),
+      height: 50,
+      width: MediaQuery.of(context).size.width - 55,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(23),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black.withOpacity(0.19),
+                offset: const Offset(0.5, 4),
+                spreadRadius: 1,
+                blurRadius: 8),
+            BoxShadow(
+                color: Colors.white.withOpacity(0.4),
+                offset: const Offset(-3, -4),
+                spreadRadius: -2,
+                blurRadius: 20),
+          ]),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+        child: TextField(
+          keyboardType: TextInputType.number,
+          cursorColor: darkShrinePink,
+          decoration: InputDecoration(
+            suffixText: suffix,
+            suffixStyle: GoogleFonts.lato(color: darkShrinePink, fontSize: 17),
+            hintStyle: GoogleFonts.lato(color: darkShrinePink, fontSize: 20),
+            hintText: hint,
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.transparent),
             ),
-            onChanged: (value) {
-
-
-              print(value);
-              // take
-              
-            },
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.transparent),
+            ),
           ),
-        ));
+          onChanged: (value) {
+            print(value);
+            index == 0
+                ? milage = double.parse(value)
+                : distance = double.parse(value);
+
+            Provider.of<Data>(context, listen: false).getDistance(distance);
+            Provider.of<Data>(context, listen: false).getMileage(milage);
+            Provider.of<Data>(context, listen: false).show();
+            // take
+          },
+        ),
+      ),
+    );
   }
 }
