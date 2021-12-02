@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: themeData,
-      initialRoute:DropDownWithPanDownAndDrawer.id,
+      initialRoute:BaseScreen.id,
       routes: {
         BaseScreen.id : (context) => BaseScreen(duration: 5,nextPage: DropDownWithPanDownAndDrawer(),),
         DemoScreen.id : (context) => DemoScreen(),
