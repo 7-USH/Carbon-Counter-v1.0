@@ -1,3 +1,4 @@
+import 'package:carbon_counter/models/customdropdown.dart';
 import 'package:flutter/material.dart';
 
 class DemoScreen extends StatefulWidget {
@@ -20,11 +21,10 @@ class _DemoScreenState extends State<DemoScreen> {
   String dropDownValue = 'Petrol';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: DropdownButton<String>(
-          items: items.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(value: value, child: Text(value));
-      }).toList()),
+    return const Scaffold(
+      body: Center(
+        child: CustomDropDown(),
+      ),
     );
   }
 }
