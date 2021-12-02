@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:ffi';
-
 import 'package:carbon_counter/screens/transport_options.dart';
 import 'package:flutter/material.dart';
 
