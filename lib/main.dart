@@ -3,6 +3,7 @@
 import 'package:carbon_counter/constants/constants.dart';
 import 'package:carbon_counter/models/data.dart';
 import 'package:carbon_counter/screens/base_screen.dart';
+import 'package:carbon_counter/screens/calculate2.dart';
 import 'package:carbon_counter/screens/demo_screen.dart';
 import 'package:carbon_counter/screens/drop.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: themeData,
+        // initialRoute: BaseScreen.id,
         initialRoute: BaseScreen.id,
         routes: {
           BaseScreen.id: (context) => BaseScreen(
