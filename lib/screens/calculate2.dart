@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 bool isLoading = true; //create a variable to define wheather loading or not
- Color color = Colors.green;
+Color color = Colors.green;
 double ghg2 = 0;
 
 class Calculate2 extends StatefulWidget {
@@ -40,7 +40,6 @@ class _Calculate2State extends State<Calculate2> {
       });
       return ghg2;
     }
-
 
     return Scaffold(
       body: Center(
@@ -88,17 +87,17 @@ class _Calculate2State extends State<Calculate2> {
                                   calculate(distance, milage, getGHG())
                               ? 0
                               : 2),
-                      style:  GoogleFonts.ptSerif(
-        color: color,
-        fontSize: 40,
-      ),
+                      style: GoogleFonts.ptSerif(
+                        color: color,
+                        fontSize: 40,
+                      ),
                     ),
-                     Text(
+                    Text(
                       "  CO₂eKg",
-                      style:  GoogleFonts.ptSerif(
-        color: color,
-        fontSize: 30,
-      ),
+                      style: GoogleFonts.ptSerif(
+                        color: color,
+                        fontSize: 30,
+                      ),
                     )
                   ],
                 )
@@ -115,10 +114,10 @@ class _Calculate2State extends State<Calculate2> {
 
     if (ghg > 0.8) {
       color = Colors.red;
+    } else {
+      color = Colors.green;
     }
-    setState(() {
-      
-    }); 
+    setState(() {});
     return ghg;
   }
 }
