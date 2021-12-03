@@ -184,7 +184,6 @@ class CustomTextField extends StatelessWidget {
             ),
           ),
           onChanged: (value) {
-            print(value);
             index == 0
                 ? milage = double.parse(value)
                 : distance = double.parse(value);
