@@ -2,10 +2,11 @@
 import 'package:carbon_counter/models/data.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 bool isLoading = true; //create a variable to define wheather loading or not
-
+Color color = Colors.green;
 double ghg2 = 0;
 
 class Calculate2 extends StatefulWidget {
@@ -66,28 +67,38 @@ class _Calculate2State extends State<Calculate2> {
             ),
             child: Column(
               children: [
-                const SizedBox(height: 100,),
+                const SizedBox(
+                  height: 100,
+                ),
                 Text(
                   "Your Carbon Emission as of Today is",
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headline2,
                 ),
-                const SizedBox(height:50),
+                const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
                       calculate(distance, milage, getGHG()).toStringAsFixed(
-                        calculate(distance, milage, getGHG()).truncateToDouble() ==
-                                calculate(distance, milage, getGHG())
-                            ? 0
-                            : 2),
-                      style: Theme.of(context).textTheme.bodyText2 ,
+                          calculate(distance, milage, getGHG())
+                                      .truncateToDouble() ==
+                                  calculate(distance, milage, getGHG())
+                              ? 0
+                              : 2),
+                      style: GoogleFonts.ptSerif(
+                        color: color,
+                        fontSize: 40,
+                      ),
                     ),
-                    const Text("  CO₂eKg",style: TextStyle(
-                      fontSize: 30
-                    ),)
+                    Text(
+                      "  CO₂eKg",
+                      style: GoogleFonts.ptSerif(
+                        color: color,
+                        fontSize: 30,
+                      ),
+                    )
                   ],
                 )
               ],
@@ -100,6 +111,13 @@ class _Calculate2State extends State<Calculate2> {
 
   double calculate(double distance, double mileage, double g) {
     double ghg = (distance / mileage) * g;
+
+    if (ghg > 0.8) {
+      color = Colors.red;
+    } else {
+      color = Colors.green;
+    }
+    setState(() {});
     return ghg;
   }
 }
